@@ -1,0 +1,34 @@
+baseURL = "https://righthand0521.github.io/public/"
+languageCode = "en-us"
+title = "Yu-Chuan Cheng"
+
+theme = "hello-friend-ng"
+paginate  = 10
+[params]
+  # Custom footer; If you want, you can easily override the default footer with your own content.
+  # footerLeft = " "
+  footerRight = " "
+  [params.logo]
+    logoMark     = ">"
+    logoText     = "$ cd /home/"
+    logoHomeLink = "/public/"
+  [[params.social]]
+    name = "email"
+    url  = "mailto:righthand0521@gmail.com"
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/righthand0521"
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/yu-chuan-cheng-0521"
+  [[params.social]]
+    name = "facebook"
+    url  = "https://www.facebook.com/righthand0521"
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/righthand0521"
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name       = "Posts"
+    url        = "posts/"

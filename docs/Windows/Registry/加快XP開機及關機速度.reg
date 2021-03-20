@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"HungAppTimeout"="40"
+"WaitToKillAppTimeout"="200"
+
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"HungAppTimeout"="40"
+"WaitToKillAppTimeout"="200"
+

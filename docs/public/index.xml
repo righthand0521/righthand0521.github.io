@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yu-Chuan Cheng</title>
+    <link>https://righthand0521.github.io/public/</link>
+    <description>Recent content on Yu-Chuan Cheng</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://righthand0521.github.io/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello, world.</title>
+      <link>https://righthand0521.github.io/public/posts/hello/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://righthand0521.github.io/public/posts/hello/</guid>
+      <description>Hugo # echo &amp;quot;Hello, world.&amp;quot; </description>
+    </item>
+    
+  </channel>
+</rss>

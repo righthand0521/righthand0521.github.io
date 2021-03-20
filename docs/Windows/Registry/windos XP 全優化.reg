@@ -1,0 +1,53 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"DisablePagingExecutive"=dword:00000001
+"SecondLevelDataCache"=dword:00000200
+"IoPageLockLimit"=dword:00040000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
+"EnablePrefetcher"=dword:00000005
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"HungAppTimeout"="200"
+"WaitToKillAppTimeout"="500"
+"AutoEndTasks"="1"
+"MenuShowDelay"="100"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"HungAppTimeout"="200"
+"WaitToKillAppTimeout"="500"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
+"NonBestEffortLimit"=dword:00000000
+
+[HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+"AutoEndTasks"="1"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"GlobalMaxTcpWindowSize"=dword:00057E40
+"TcpWindowSize"=dword:00057E40
+"Tcp1323Opts"=dword:00000001
+"DefaultTTL"=dword:00000040
+"EnablePMTUDiscovery"=dword:00000001
+"EnablePMTUBHDetect"=dword:00000000
+"SackOpts"=dword:00000001
+"TcpMaxDupAcks"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\interface]
+"MTU"=dword:00000BB8
+
+[HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+"MaxConnectionsPerServer"=dword:00000064 
+"MaxConnectionsPer1_0Server"=dword:00000064 
+
+[HKEY_CURRENT_USERS\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+"MaxConnectionsPerServer"=dword:00000064 
+"MaxConnectionsPer1_0Server"=dword:00000064
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Update] 
+"UpdateMode"=dword:00000000 
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\FileSystem]
+"ConfigFileAllocSize"=dword:000001f4
+
