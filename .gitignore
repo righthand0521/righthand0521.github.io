@@ -1,0 +1,10 @@
+﻿#
+.vscode/
+
+# Python
+*__pycache__
+
+# Rust
+# *main.rs
+# *Cargo.*
+# target/
