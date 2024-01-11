@@ -1,0 +1,13 @@
+
+---
+- name: uname
+  hosts: all
+  tasks:
+    - name: Run command
+      shell: uname -a
+      # command: uname -a; cat /etc/network/interfaces
+      register: result
+
+    - name: print stdout
+      debug:
+        msg: "{{ result.stdout }}"

@@ -1,0 +1,41 @@
+-- Test-MIB.my
+    Test-MIB DEFINITIONS ::= BEGIN
+
+        IMPORTS
+            OBJECT-GROUP, MODULE-COMPLIANCE, NOTIFICATION-GROUP
+                FROM SNMPv2-CONF
+            enterprises, Integer32, Unsigned32, OBJECT-TYPE, MODULE-IDENTITY,
+            NOTIFICATION-TYPE
+                FROM SNMPv2-SMI
+            DisplayString
+                FROM SNMPv2-TC;
+
+-- October 09, 2002 at 14:50 GMT
+        -- 1.3.6.1.4.1.16535
+        Test MODULE-IDENTITY
+            LAST-UPDATED "200210091450Z"        -- October 09, 2002 at 14:50 GMT
+            ORGANIZATION
+                ""
+            CONTACT-INFO
+                ""
+            DESCRIPTION
+                "Video's Server MIB."
+            ::= { enterprises 16535 }
+
+--  Node definitions
+-- This part will include all details about the Test.
+        -- 1.3.6.1.4.1.16535.1
+        Time OBJECT IDENTIFIER ::= { Test 1 }
+
+
+        -- 1.3.6.1.4.1.16535.1.1
+        GetTime OBJECT-TYPE
+            SYNTAX DisplayString (SIZE (0..100))
+            MAX-ACCESS read-only
+            STATUS current
+            DESCRIPTION
+                "Example : 2013/4/11"
+            ::= { Time 1 }
+    END
+
+-- Test-MIB.my

@@ -1,0 +1,9 @@
+$TTL 600
+$ORIGIN dns.yc.org.
+@           IN  SOA     dns.yc.org. root.dns.yc.org. (
+                        2023110300  3H  15M 1W  1D  )
+            IN  NS      dns.yc.org.
+dns.yc.org. IN  A       127.0.0.1
+
+smb         IN  A       192.168.0.111
+smb         IN  AAAA    fe80::fefc:48ff:fe20:111

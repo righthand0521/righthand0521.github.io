@@ -1,0 +1,24 @@
+WshShell = new ActiveXObject("Wscript.Shell");
+
+function sleep(sec) {
+	var time = new Date().getTime();
+	while(new Date().getTime() - time < sec * 100);
+}
+
+sleep(3)
+WshShell.SendKeys ('root'+'{ENTER}');
+
+sleep(3)
+WshShell.SendKeys ('password'+'{ENTER}');
+
+sleep(3)
+WshShell.SendKeys ('uname -a'+'{ENTER}');
+
+sleep(3)
+WshShell.SendKeys ('sleep 3'+'{ENTER}');
+
+sleep(3)
+WshShell.SendKeys ('exit'+'{ENTER}');
+
+sleep(3)
+WshShell.SendKeys ('{ENTER}');

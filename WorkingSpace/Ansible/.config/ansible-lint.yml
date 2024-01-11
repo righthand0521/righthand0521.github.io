@@ -1,0 +1,7 @@
+warn_list:
+  - fqcn-builtins # Use FQCN for builtin actions.
+  - no-changed-when # Commands should not change things if nothing needs doing.
+
+skip_list:
+  - fqcn-builtins # Use FQCN for builtin actions.
+  - no-changed-when # Commands should not change things if nothing needs doing.

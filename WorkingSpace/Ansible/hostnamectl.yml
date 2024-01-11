@@ -1,0 +1,11 @@
+---
+- name: uname
+  hosts: all
+  tasks:
+    - name: Run command
+      command: hostnamectl
+      register: result
+
+    - name: print stdout
+      debug:
+        msg: "{{ result.stdout }}"
