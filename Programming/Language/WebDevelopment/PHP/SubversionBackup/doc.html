@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		a {
+			text-decoration: none;
+			color: #0066CC;
+		}
+		a:link {
+			text-decoration: none;
+			color: #0066CC;
+		}
+		a:visited {
+			text-decoration: none;
+			color: #0066CC;
+		}
+		a:hover {
+			text-decoration: none;
+			color: #0066CC;
+		}
+	</style>
+</head>
+<body>
+	<table border="0" style="border-collapse:collapse;" width="100%">
+		<tr>
+			<td width="10px"></td>
+			<td width="25%" height="32px"><b>Subversion Server</b>@111.2.1.127</td>
+			<td></td>
+			<td width="55%"><b>Mirror Server</b>@111.2.1.70</td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<td width="25%">Linux LucidLynx 2.6.32-57-server</td>
+			<td></td>
+			<td width="55%">Linux TrustyTahr 3.13.0-24-generic</td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<td width="25%">svnserve, version 1.6.6&nbsp;(r40053)</td>
+			<td></td>
+			<td width="55%">svnserve, version 1.8.8&nbsp;(r1568071)</td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<td width="25%">svn, version 1.6.6&nbsp;(r40053)</td>
+			<td></td>
+			<td width="55%">svn, version 1.8.8&nbsp;(r1568071)</td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<td width="25%"><img src="Ubuntu 10.04.png" alt="Lucid Lynx" height="32%"></td>
+			<td></td>
+			<td width="55%"><img src="Ubuntu 14.04.gif" alt="Trusty Tahr" height="32%"></td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<td width="25%" valign="top">
+				<b>svnsync</b> Setting
+				<ol>
+					<li>vim &lt;Project Name&gt;/hooks/post-commit</li>
+				</ol>
+			</td>
+			<td></td>
+			<td width="55%" valign="top">
+				Setting: <b>svnsync</b>
+				<ol>
+					<li>svnadmin create &lt;Project Name&gt;</li>
+					<li>vim &lt;Project Name&gt;/hooks/pre-revprop-change</li>
+					<li>svnsync init file:///&lt;Mirror Path&gt;/&lt;Project Name&gt; svn+ssh://svnuser@111.2.1.127/&lt;Subversion Path&gt;/&lt;Project Name&gt;</li>
+					<li>svnsync sync file:///&lt;Mirror Path&gt;/&lt;Project Name&gt;</li>
+					<li>vim &lt;Project Name&gt;/hooks/post-commit</li>
+					<li>vim &lt;Project Name&gt;/hooks/pre-commit</li>
+				</ol>
+				
+			</td>
+			<td width="10px"></td>
+		</tr>
+		<tr>
+			<td width="10px"></td>
+			<th colspan="2"><!--<img src="Backup.png" alt="Backup">--></th>
+			<td width="55%" valign="top">
+				Backup: <b>svnadmin dump</b>
+				<ol>
+					<li>svnsync sync file://&lt;Mirror Path&gt;/&lt;Project Name&gt;</li>
+					<li>svnlook youngest &lt;Mirror Path&gt;/&lt;Project Name&gt;</li>
+					<li>svnadmin dump &lt;Mirror Path&gt;/&lt;Project Name&gt -r &lt;version&gt; &gt; &lt;SVN Dump Name&gt;</li>
+					<li>tar -zcvf &lt;Tar Store Name&gt; &lt;SVN Dump Name&gt;</li>
+					<li>mv &lt;Tar Store Name&gt; &lt;Store Path&gt;</li>
+					<li>rm &lt;SVN Dump Name&gt;</li>
+					<li>crontab -e</li>
+				</ol>
+			</td>
+			<td width="10px"></td>
+		</tr>
+	</table>
+</body>
+</html>

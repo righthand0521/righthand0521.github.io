@@ -1,0 +1,105 @@
+﻿//
+def functionTest(mail) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+        echo "${mail}"
+
+        sh "hostnamectl"
+        sh "pwd"
+    }
+}
+//
+pipeline {
+    agent none
+    parameters {
+        choice(
+            name: "mail",
+            choices: ["user1@gmail.com", "user2@gmail.com"],
+            description: ""
+        )
+    }
+    stages {
+        stage("Run") {
+            parallel {
+                stage("Machine1") {
+                    agent {
+                        label "hostname1"
+                    }
+                    steps {
+                        functionTest(params.mail)
+                    }
+                    post {
+                        failure {
+                            echo "Run Failure"
+                        }
+                        success {
+                            echo "Run Successful"
+                        }
+                    }
+                }
+                stage("Machine2") {
+                    agent {
+                        label "hostname2"
+                    }
+                    steps {
+                        functionTest(params.mail)
+                    }
+                    post {
+                        failure {
+                            echo "Run Failure"
+                        }
+                        success {
+                            echo "Run Successful"
+                        }
+                    }
+                }
+            }
+        }
+        stage("RobotPublisher") {
+            agent {
+                label "built-in"
+            }
+            steps {
+                sh "hostnamectl"
+                sh "pwd"
+
+                // https://stackoverflow.com/questions/36547680/how-do-i-get-the-output-of-a-shell-command-executed-using-into-a-variable-from-j
+                script {
+                    TEST_NAME = sh (
+                        script: 'date +%s',
+                        returnStdout: true
+                    ).trim()
+                    echo "TEST_NAME: ${TEST_NAME}"
+                }
+                echo "TEST_NAME: ${TEST_NAME}"
+
+                // RobotFramework Report
+                dir("/var/www/html/RobotFramework") {
+                    sh "pwd"
+                    sh "ls -l"
+                    script {
+                        step(
+                            [
+                                $class              : 'RobotPublisher',
+                                outputPath          : '',
+                                outputFileName      : 'output.xml',
+                                reportFileName      : 'report.html',
+                                logFileName         : 'log.html',
+                                disableArchiveOutput: false,
+                                passThreshold       : 1,
+                                unstableThreshold   : 1,
+                                // otherFiles          : "**/*.png,**/*.jpg",
+                            ]
+                        )
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            emailext body: '''${SCRIPT, template="email.RobotBuildAction.template.groovy"}''',
+            to: "user@gmail.com",
+            subject: "${env.JOB_NAME} #${env.BUILD_NUMBER}: ${currentBuild.currentResult}"
+        }
+    }
+}

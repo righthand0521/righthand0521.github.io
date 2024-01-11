@@ -1,0 +1,61 @@
+﻿body {
+	margin: 5px;
+	padding: 5px;
+	background-color: black;
+}
+
+#divSilver {
+	margin: 10px;
+	float: left;
+	width: 320px;
+	min-height: 100%;
+	background:Silver;
+}
+
+pre.display {
+	background-color: black;
+	color: white;
+}
+
+table.M×0 td {
+	width: 10px;
+	height: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+
+.hover-underline-animation {
+	display: inline-block;
+	position: relative;
+	color: #0087ca;
+	font-size: 18px;
+}
+.hover-underline-animation::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #0087ca;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+	font-size: 18px;
+}
+.hover-underline-animation:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+	font-size: 18px;
+}
