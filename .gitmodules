@@ -1,0 +1,9 @@
+[submodule "Programming/LeetCode"]
+	path = Programming/LeetCode
+	url = https://github.com/righthand0521/LeetCode.git
+[submodule "WorkingSpace/Docker"]
+	path = WorkingSpace/Docker
+	url = https://github.com/righthand0521/Docker.git
+[submodule "English"]
+	path = English
+	url = https://github.com/righthand0521/English.git
