@@ -31,7 +31,7 @@ param([string]$URL = 'https://www.google.com/')
 try {
     Start-Process $URL
 
-    "Success in line $($_.InvocationInfo.ScriptLineNumber):"
+    Write-Host 'Success' -ForegroundColor Cyan
     exit 0
 }
 catch {

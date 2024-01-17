@@ -92,7 +92,7 @@ try {
 
     $smtp.Send($msg)
 
-    "Success in line $($_.InvocationInfo.ScriptLineNumber): Message sent"
+    Write-Host 'Success' -ForegroundColor Cyan
     exit 0
 }
 catch {
