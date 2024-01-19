@@ -660,6 +660,7 @@ scp <Remote User>@<Remote IP>:/<Remote Path> <Local Path>
 
 ```bash
 sed -i 's#\(.*/root:\).*#\1/bin/sh#' /etc/passwd
+sed -i -e 's|#force_color_prompt=yes|force_color_prompt=yes|' .bashrc
 ```
 
 ```bash

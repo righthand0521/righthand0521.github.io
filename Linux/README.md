@@ -307,6 +307,10 @@ alias google-chrome='google-chrome -no-sandbox'
 ### source ~/.bashrc
 
 ```bash
+sed -i -e 's|#force_color_prompt=yes|force_color_prompt=yes|' .bashrc
+```
+
+```bash
 force_color_prompt=yes
 ```
 
