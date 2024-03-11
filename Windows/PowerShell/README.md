@@ -3,6 +3,18 @@
 - [wiki](https://zh.wikipedia.org/wiki/PowerShell)
 - [如何使用 PowerShell 檔](https://learn.microsoft.com/zh-tw/powershell/scripting/how-to-use-docs?view=powershell-7.4)
 
+## [在 Windows 上安裝 PowerShell](https://learn.microsoft.com/zh-tw/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4)
+
+## [about_PowerShell_Editions](https://learn.microsoft.com/zh-tw/powershell/module/microsoft.powershell.core/about/about_powershell_editions?view=powershell-7.4&WT.mc_id=DT-MVP-5003022)
+
+```ps1
+$PSVersionTable
+```
+
+```ps1
+get-host
+```
+
 ## [PowerShell 「系統上已停用指令碼執行」解決方法](https://hackercat.org/windows/powershell-cannot-be-loaded-because-the-execution-of-scripts-is-disabled-on-this-system)
 
 ```ps1
