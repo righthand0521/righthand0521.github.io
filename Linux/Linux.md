@@ -10,6 +10,15 @@
 > /dev/null 2>&1
 ```
 
+## arp-scan(1) - The ARP scanner
+
+```bash
+apt install arp-scan -y
+
+arp-scan --interface eth0 192.168.0.0/24
+arp-scan --interface eth0 --localnet
+```
+
 ## awk(1) - pattern scanning and processing language
 
 - awk 'pattern + {action}'
