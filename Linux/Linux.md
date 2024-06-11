@@ -729,6 +729,11 @@ systemctl enable ser2net
 apt install socat -y
 ```
 
+```bash
+# Syslog Server
+socat -u udp4-listen:514, bind=192.168.0.1 open:/tmp/syslog, creat, append
+```
+
 ## ssh(1) - OpenSSH SSH client (remote login program)
 
 ```bash
