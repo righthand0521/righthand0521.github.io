@@ -33,6 +33,8 @@ Register-ScheduledTask -TaskName $TaskName -InputObject $Task
 ```text
 regedit.exe
 regedit.exe /s ".reg path"
+
+Win+R -> regedit
 ```
 
 - 電腦->連線網路磁碟機->資料夾
@@ -60,6 +62,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explore
 
 ```text
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\AllowInsecureGuestAuth=dword:00000001
+```
+
+- Interface List
+
+```text
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles\
 ```
 
 ## [Windows Subsystem for Linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)

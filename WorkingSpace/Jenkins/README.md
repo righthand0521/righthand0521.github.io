@@ -6,7 +6,9 @@
 ## [Install](https://www.jenkins.io/doc/book/installing/linux/)
 
 ```bash
-apt install openjdk-11-jdk -y
+apt-cache search openjdk | grep openjdk-17
+apt install openjdk-17-jdk -y
+
 javac -version
 java -version
 ```
