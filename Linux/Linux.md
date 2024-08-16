@@ -353,6 +353,16 @@ ip route add 172.16.0.0/16 dev eth0
 ip route add 172.16.0.0/16 via 192.168.0.1 dev eth0
 ```
 
+```bash
+ip tunnel add tun6to4 mode sit ttl 128 remote 192.168.0.1 local 192.168.0.2
+ip link set dev tun6to4 up
+ip -6 addr add 2002:c0a8:38fe::1/24 dev tun6to4
+
+ip -6 addr del 2002:c0a8:38fe::1/16 dev tun6to4
+ip link set dev tun6to4 down
+ip tunnel del tun6to4 mode sit ttl 128 remote 192.168.0.1 local 192.168.0.2
+```
+
 ## iperf(1) - perform network throughput tests
 
 ```bash
@@ -1000,6 +1010,8 @@ tcpprep --auto=client --pcap=test.pcap --cachefile=test.cache
 ```bash
 tcprewrite --enet-dmac=00:00:00:11:11:11,00:00:00:11:11:12 --enet-smac=ff:ff:ff:11:11:11,ff:ff:ff:11:11:12 \
 --endpoints=192.168.0.1:192.168.1.1 --cachefile=test.cache --infile=test.pcap --outfile=testOutput.pcap
+
+tcprewrite --pnat=192.168.0.1:192.168.1.1 --infile=test.pcap --outfile=testOutput.pcap
 ```
 
 ### tcpreplay(1) - Replay network traffic stored in pcap files
@@ -1007,6 +1019,8 @@ tcprewrite --enet-dmac=00:00:00:11:11:11,00:00:00:11:11:12 --enet-smac=ff:ff:ff:
 ```bash
 tcpreplay --loop=1 --pps=300 --cachefile=test.cache --intf1=eth0 --intf2=eth1 testOutput.pcap
 tcpreplay --loop=1 --multiplier=1 --timer=gtod -2 --intf1=eth0 --intf2=eth1 test.pcap
+
+tcpreplay-edit --pnat=192.168.0.1:192.168.1.1,192.168.0.2:192.168.1.2 -i eth1 test.pcap
 ```
 
 ## [tcpping](https://neoctobers.readthedocs.io/en/latest/linux/tcpping_on_ubuntu.html)
