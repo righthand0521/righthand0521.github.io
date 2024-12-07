@@ -84,6 +84,27 @@ pip install --upgrade pip
 python -m pip install --upgrade pip
 ```
 
+### [externally-managed-environment](https://www.yaolong.net/article/pip-externally-managed-environment/#%E6%96%B9%E6%A1%88%E4%B8%80%E7%B2%97%E6%9A%B4-%E5%8E%BB%E6%8E%89%E8%BF%99%E4%B8%AA%E6%8F%90%E7%A4%BA)
+
+```bash
+mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bk
+```
+
+### pipx
+
+```bash
+apt install pipx
+pipx ensurepath
+
+pipx install robotframework
+pipx ensurepath
+pipx uninstall robotframework
+
+pipx install uploadserver
+pipx ensurepath
+pipx uninstall uploadserver
+```
+
 ### [NumPy](https://numpy.org/)
 
 ```bash

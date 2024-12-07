@@ -675,6 +675,14 @@ scp <Local Path> <Remote User>@<Remote IP>:/<Remote Path>
 scp <Remote User>@<Remote IP>:/<Remote Path> <Local Path>
 ```
 
+```bash
+-O
+Use the legacy SCP protocol for file transfers instead of the SFTP protocol.
+Forcing the use of the SCP protocol may be necessary for servers that do not implement SFTP,
+for backwards compatibility for particular filename wildcard patterns
+and for expanding paths with a '~' prefix for older SFTP servers.
+```
+
 ## sed(1) - stream editor for filtering and transforming text
 
 ```bash

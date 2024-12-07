@@ -234,6 +234,14 @@ timedatectl set-timezone UTC
 localectl set-locale LC_TIME=en_GB.UTF-8
 ```
 
+```bash
+# cat /etc/timezone
+Asia/Taipei
+
+#  ls -l /etc/localtime
+lrwxrwxrwx 1 root root 31 Dec  2 15:13 /etc/localtime -> /usr/share/zoneinfo/Asia/Taipei
+```
+
 #### CentOS, Fedora
 
 ```bash
@@ -292,9 +300,8 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # alias
-alias tree='tree --charset ASCII'
 alias tree='tree -C --charset ASCII'
-alias treel='tree -pugsD --charset ASCII'
+alias treel='tree -C --charset ASCII -pugsD'
 alias targzc='tar -zcvf'
 alias targzd='tar -zxvf'
 alias tarbz2c='tar jcvf'
@@ -407,6 +414,14 @@ Listen 8080
 
 ```bash
 <VirtualHost *:8080>
+```
+
+#### [Apache2 : Configure SSL/TLS](https://www.server-world.info/en/note?os=Ubuntu_24.04&p=httpd&f=3)
+
+```bash
+a2ensite default-ssl
+a2enmod ssl
+systemctl restart apache2
 ```
 
 #### [Ubuntu18.04 Apache2 配置 python3 CGI](https://pmvt.cn/develop/python3-apache2-cgi.html)
@@ -670,6 +685,10 @@ apt install tigervnc-standalone-server -y
 systemctl enable xrdp
 
 netstat -antpu | grep 3389
+
+cat /var/log/xrdp-sesman.log
+cat /var/log/xrdp.log
+cat /var/log/Xorg.0.log
 ```
 
 ### Telnet
@@ -681,7 +700,7 @@ apt install xinetd telnetd -y
 - vim /etc/inetd.conf
 
 ```bash
-telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/telnetd
 ```
 
 - vim /etc/xinetd.conf
@@ -699,8 +718,11 @@ log_on_success = HOST PID
 log_on_failure = HOST
 cps = 25 30
 }
+```
 
-# vim /etc/xinetd.d/telnet
+- vim /etc/xinetd.d/telnet
+
+```bash
 service telnet
 {
     disable = no
@@ -708,7 +730,7 @@ service telnet
     socket_type = stream
     wait = no
     user = root
-    server = /usr/sbin/in.telnetd
+    server = /usr/sbin/telnetd
     log_on_failure += USERID
 }
 ```
@@ -805,6 +827,8 @@ apt install xfce4 -y
 printenv DISPLAY
 export DISPLAY=:10.0
 
+ln -s /usr/bin/startxfce4 /root/.xsession
+
 startxfce4
 ```
 
@@ -874,14 +898,6 @@ apt install p7zip-full -y
 
 ```batch
 "C:\Program Files\7-Zip\7z.exe" a -ttar -so fileName.tar fileName | "C:\Program Files\7-Zip\7z.exe" a -si fileName.tgz
-```
-
-### cockpit
-
-```bash
-apt install cockpit -y
-
-https://<IP Address>:9090
 ```
 
 ### Google Chrome
