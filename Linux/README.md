@@ -670,6 +670,10 @@ apt install tigervnc-standalone-server -y
 systemctl enable xrdp
 
 netstat -antpu | grep 3389
+
+cat /var/log/xrdp-sesman.log
+cat /var/log/xrdp.log
+cat /var/log/Xorg.0.log
 ```
 
 ### Telnet
@@ -681,7 +685,7 @@ apt install xinetd telnetd -y
 - vim /etc/inetd.conf
 
 ```bash
-telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/telnetd
 ```
 
 - vim /etc/xinetd.conf
@@ -699,8 +703,11 @@ log_on_success = HOST PID
 log_on_failure = HOST
 cps = 25 30
 }
+```
 
-# vim /etc/xinetd.d/telnet
+- vim /etc/xinetd.d/telnet
+
+```bash
 service telnet
 {
     disable = no
@@ -708,7 +715,7 @@ service telnet
     socket_type = stream
     wait = no
     user = root
-    server = /usr/sbin/in.telnetd
+    server = /usr/sbin/telnetd
     log_on_failure += USERID
 }
 ```
@@ -804,6 +811,8 @@ apt install xfce4 -y
 
 printenv DISPLAY
 export DISPLAY=:10.0
+
+ln -s /usr/bin/startxfce4 /root/.xsession
 
 startxfce4
 ```
