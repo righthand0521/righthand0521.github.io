@@ -5,6 +5,8 @@
 
 ## [Install](https://www.jenkins.io/doc/book/installing/linux/)
 
+- [Docker Hub](https://hub.docker.com/_/jenkins)
+
 ```bash
 apt-cache search openjdk | grep openjdk-17
 apt install openjdk-17-jdk -y
@@ -14,11 +16,9 @@ java -version
 ```
 
 ```bash
-wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
-sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
-
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
-sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | \
+tee /etc/apt/sources.list.d/jenkins.list
 
 apt update
 apt install jenkins -y
@@ -38,39 +38,10 @@ apt-key adv --recv-keys --keyserver keyserver.ubuntu.com <NO_PUBKEY>
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com FCEF32E745F2C3D5
 ```
 
-### [Docker Hub](https://hub.docker.com/_/jenkins)
-
 ```bash
-docker pull jenkins
-docker pull jenkins/jenkins:lts
-```
-
-- This will store the workspace in /var/jenkins_home. All Jenkins data lives in there - including plugins and configuration.
-
-```bash
-docker run -p 8080:8080 -p 50000:50000 jenkins
-docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-```
-
-- This will store the jenkins data in /your/home on the host.
-Ensure that /your/home is accessible by the jenkins user in container (jenkins user - uid 1000) or use -u some_other_user
-parameter with docker run.
-
-```bash
-docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins
-docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins
-docker exec myjenkins cat /var/jenkins_home/secrets/initialAdminPassword
-```
-
-- Update
-
-```bash
-docker container exec -u 0 -it myjenkins bash
-wget https://updates.jenkins-ci.org/latest/jenkins.war
-mv jenkins.war /usr/share/jenkins
-chown jenkins:jenkins /usr/share/jenkins/jenkins.war
-exit
-docker container restart myjenkins
+apt remove --purge jenkins
+apt remove jenkins
+apt remove --auto-remove jenkins
 ```
 
 ## Configure
@@ -79,21 +50,16 @@ docker container restart myjenkins
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-``` bash
-# vim /var/lib/jenkins/config.xml
+- vim /var/lib/jenkins/config.xml
+
+```bash
 <useSecurity>false</useSecurity>
 ```
 
+- vim /etc/default/jenkins
+
 ```bash
-# vim /etc/sudoers
-jenkins ALL=(ALL:ALL) NOPASSWD:ALL
-
-# vim /etc/default/jenkins
 JENKINS_USER=root
-
-chown -R root:root /var/lib/jenkins
-chown -R root:root /var/cache/jenkins
-chown -R root:root /var/log/jenkins
 ```
 
 ```bash
@@ -133,7 +99,7 @@ export DISPLAY=:0
 
 ## Plugin
 
-### Robot Framework
+### [Robot Framework](https://plugins.jenkins.io/robot/)
 
 ```text
 ${SCRIPT,template="email-template.groovy"}
@@ -154,22 +120,29 @@ img-src 'self' data: ; style-src 'self' 'unsafe-inline' data: ; script-src 'self
 
 - [robot-framework-email-template](https://github.com/mustafa-masetic/robot-framework-email-template)
 
-### Parameterized Trigger Plugin
+### [Parameterized Trigger](https://plugins.jenkins.io/parameterized-trigger/)
 
 - [Jenkins Job 觸發其他需要參數的 Job](https://blog.yowko.com/jenkins-job-trigger-paramerized-job/)
 
-### Parameterized Scheduler
+### [Parameterized Scheduler](https://plugins.jenkins.io/parameterized-scheduler/)
 
-### Environment Injector
+### [Environment Injector](https://plugins.jenkins.io/envinject/)
 
-### [Plugin - LogParser](https://plugins.jenkins.io/log-parser/)
+### [Log Parser](https://plugins.jenkins.io/log-parser/)
+
+- vim /root/Jenkins/LogParser
 
 ```bash
-# vim /root/Jenkins/LogParser
 error /^ERROR/
 ```
 
-### Config File Provider
+### [Config File Provider](https://plugins.jenkins.io/config-file-provider/)
+
+### [Zentimestamp](https://plugins.jenkins.io/zentimestamp/)
+
+### [Email Extension Template](https://plugins.jenkins.io/emailext-template/)
+
+### [Blue Ocean](https://plugins.jenkins.io/blueocean/)
 
 ## [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 
