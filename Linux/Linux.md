@@ -334,6 +334,7 @@ done
 ## ip(8) - show / manipulate routing, devices, policy routing and tunnels
 
 ```bash
+ip -c -br a
 ip addr show eth0 | awk '/inet / {print $2}' | cut -f 1 -d /
 ```
 
