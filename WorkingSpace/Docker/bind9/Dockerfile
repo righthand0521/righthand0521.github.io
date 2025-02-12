@@ -18,18 +18,19 @@
 
 
 ###
-FROM ubuntu:22.04
+# FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing usage BIND DNS Server. The network environment is inherited host settings."
 
 ###
 RUN apt update -y
 RUN apt install net-tools -y
+RUN apt install wget curl -y
 RUN apt install vim -y
-RUN apt install systemctl -y
 
 ###
 RUN apt install bind9 -y
