@@ -16,11 +16,12 @@
 
 
 ###
-FROM ubuntu:22.04
+# FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing tool. The network environment is inherited host settings."
 
 ###
