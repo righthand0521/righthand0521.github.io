@@ -1,9 +1,24 @@
 #!/bin/sh
 
-[ ${#} -lt 1 ] && echo "Options: <Module> <RHOSTS>" && exit 255
-Module="${1}"
-RHOSTS="${2}"
-echo "[${LINENO}]: ${Module}; ${RHOSTS}"
+case "${#}" in
+"1")
+    if [ "${1}" == "bash" ]; then
+        bash
+        exit 0
+    fi
+    echo "Options: <Module> <RHOSTS>"
+    exit 255
+    ;;
+"2")
+    Module="${1}"
+    RHOSTS="${2}"
+    echo "[${LINENO}]: ${Module}; ${RHOSTS}"
+    ;;
+*)
+    echo "Options: <Module> <RHOSTS>"
+    exit 255
+    ;;
+esac
 
 meterpreter="/tmp/meterpreter.rc"
 [ -e "${meterpreter}" ] && rm "${meterpreter}"

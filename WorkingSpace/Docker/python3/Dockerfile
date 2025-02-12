@@ -17,17 +17,19 @@
 
 ###
 FROM ubuntu:24.04
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing tool using python3. The network environment is inherited host settings."
 
 ###
 RUN apt update -y
 RUN apt install build-essential libc6 libc6-dev -y
 RUN apt install net-tools -y
+RUN apt install wget curl -y
+RUN apt install vim -y
 #
 RUN python -m pip install --upgrade pip
 RUN pip install pyinstaller==6.3

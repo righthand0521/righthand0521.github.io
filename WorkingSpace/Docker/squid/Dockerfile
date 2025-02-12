@@ -18,21 +18,23 @@
 
 
 ###
-FROM ubuntu:22.04
+# FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing usage Squid Cache. The network environment is inherited host settings."
 
 ###
 RUN apt update -y
 RUN apt install net-tools -y
+RUN apt install wget curl -y
+RUN apt install vim -y
 
 ###
 # Squid Cache: Version 5.2
-# Service Name: squid
-# Ubuntu linux
+# Squid Cache: Version 6.1
 ###
 RUN apt install squid -y
 RUN apt install squid-openssl -y
@@ -42,12 +44,13 @@ COPY squid52.tgz /
 RUN tar -zxvf squid52.tgz -C /
 RUN rm squid52.tgz
 #
-COPY runSquid.sh /usr/local/sbin/runSquid
-RUN chmod 755 /usr/local/sbin/runSquid
+COPY run.sh /usr/local/sbin/run
+RUN chmod 755 /usr/local/sbin/run
 
 ###
 RUN ln -sf /bin/bash /bin/sh
 
 ###
 WORKDIR /
-ENTRYPOINT ["runSquid"]
+# ENTRYPOINT ["bash"]
+ENTRYPOINT ["run"]

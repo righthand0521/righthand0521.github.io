@@ -289,6 +289,7 @@ MAILTO=""
 ```bash
 # @reboot
 tabs 4
+ulimit -c unlimited
 
 # export
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -306,6 +307,7 @@ alias targzc='tar -zcvf'
 alias targzd='tar -zxvf'
 alias tarbz2c='tar jcvf'
 alias tarbz2d='tar jxvf'
+alias ip='ip -c'
 alias grepin='grep --color=auto -irnw --include=*.{c,cpp,h}'
 alias pylint='pylint --disable=missing-docstring'
 alias google-chrome='google-chrome -no-sandbox'
@@ -328,6 +330,12 @@ force_color_prompt=yes
 %sudo   ALL=(ALL:ALL) ALL
 right   ALL=(ALL:ALL) NOPASSWD:ALL
 jenkins ALL=(ALL:ALL) NOPASSWD:ALL
+```
+
+### vim /etc/sysctl.conf
+
+```bash
+kernel.core_pattern = core.%e.%p.%t
 ```
 
 ## Service

@@ -12,6 +12,11 @@
 
 ### Commands
 
+```bash
+git -v
+git update-git-for-windows
+```
+
 - vim .gitconfig
 
 ```bash
@@ -220,6 +225,34 @@ git push -u origin --tags
 ```
 
 ### [Git Large File Storage](https://git-lfs.com/)
+
+### Submodule
+
+- [submodule 使用教學](https://blog.kennycoder.io/2020/06/14/Git-submodule-%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%B8/#Git-Submodule-%E6%8C%87%E4%BB%A4%E6%95%99%E5%AD%B8%E7%A4%BA%E7%AF%84)
+
+```bash
+- 對主 Repository 加入 Git SubModule
+git submodule add <remote repository> <local path>
+
+- 子模組進行更新後，如何同步
+git submodule update --remote --merge
+
+- 主子模組整個都要更新
+git pull --recurse-submodules <branch>
+
+- Clone 主子模組
+git clone --recurse-submodules <remote repository>
+git clone <remote repository>; git submodule update --init --recursive
+
+- 如何刪除 Git Submodule 的關係
+git submodule deinit <submodules>
+git add .gitmodules
+git rm --cached <submodules>
+rm -rf .git/modules/<submodules>
+git commit -m 'remove submodule'
+rm -rf <submodules>
+git push
+```
 
 ## SVN: Apache Subversion
 

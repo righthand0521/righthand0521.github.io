@@ -21,13 +21,15 @@ FROM python:2.7-slim
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing tool using python2. The network environment is inherited host settings."
 
 ###
 RUN apt update -y
 RUN apt install build-essential libc6 libc6-dev -y
 RUN apt install net-tools -y
+RUN apt install wget curl -y
+RUN apt install vim -y
 #
 RUN python -m pip install --upgrade pip
 RUN pip install pyinstaller==3.6

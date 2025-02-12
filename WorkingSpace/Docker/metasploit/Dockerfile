@@ -18,17 +18,20 @@
 
 
 ###
-FROM ubuntu:22.04
+# FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ###
 LABEL authors="Yu-Chuan Cheng"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL description="This is testing tool using Metasploit. The network environment is inherited host settings."
 
 ###
 RUN apt update -y
 RUN apt install net-tools -y
-RUN apt install wget curl gpg-agent -y
+RUN apt install wget curl -y
+RUN apt install gnupg2 gpg-agent -y
+RUN apt install vim -y
 
 ###
 WORKDIR /opt
@@ -42,12 +45,12 @@ RUN curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/conf
 RUN chmod 755 msfinstall
 RUN ./msfinstall
 #
-COPY runMetasploit.sh /usr/local/sbin/runMetasploit
-RUN chmod 755 /usr/local/sbin/runMetasploit
+COPY run.sh /usr/local/sbin/run
+RUN chmod 755 /usr/local/sbin/run
 
 ###
 RUN ln -sf /bin/bash /bin/sh
 
 ###
 WORKDIR /
-ENTRYPOINT ["runMetasploit"]
+ENTRYPOINT ["run"]
